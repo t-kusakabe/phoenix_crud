@@ -7,6 +7,11 @@ defmodule PhoenixCrud.PostController do
     render conn, "index.html", posts: posts
   end
 
+  def show(conn, %{"id" => id}) do
+    post = Post |> Repo.get(id)
+    render conn, "show.html", post: post
+  end
+
   def new(conn, _params) do
     changeset = Post.changeset(%Post{})
     render conn, "new.html", changeset: changeset
