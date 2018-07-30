@@ -1,0 +1,9 @@
+<h1>Show</h1>
+
+<div class="row">
+  <%= @post.title %>
+</div>
+
+<div class="row">
+  <%= @post.body %>
+</div>
