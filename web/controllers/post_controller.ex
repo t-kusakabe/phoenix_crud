@@ -2,6 +2,11 @@ defmodule PhoenixCrud.PostController do
   use PhoenixCrud.Web, :controller
   alias PhoenixCrud.Post
 
+  def index(conn, _params) do
+    posts = Post |> Repo.all
+    render conn, "index.html", posts: posts
+  end
+
   def new(conn, _params) do
     changeset = Post.changeset(%Post{})
     render conn, "new.html", changeset: changeset
