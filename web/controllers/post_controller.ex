@@ -18,7 +18,7 @@ defmodule PhoenixCrud.PostController do
       {:ok, _} ->
         conn
         |> put_flash(:info, "投稿しました")
-        |> redirect(to: post_path(conn, :new))
+        |> redirect(to: post_path(conn, :index))
       {:error, changeset} ->
         conn
         |> put_flash(:error, "投稿に失敗しました")
