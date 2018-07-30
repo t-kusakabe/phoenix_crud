@@ -52,5 +52,14 @@ defmodule PhoenixCrud.PostController do
         |> render("edit.html", changeset: changeset, post: post)
     end
   end
+
+  def delete(conn,  %{"id" => id}) do
+    post = Post |> Repo.get(id)
+    Repo.delete(post)
+
+    conn
+    |> put_flash(:info, "削除に成功しました")
+    |> redirect(to: post_path(conn, :index))
+  end
 end
 
