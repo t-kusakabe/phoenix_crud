@@ -1,0 +1,15 @@
+<%= form_for @changeset, @path, fn f -> %>
+  <div class="form-group">
+    <label>タイトル</label>
+    <%= text_input f, :title, class: "form-control" %>
+    <%= error_tag f, :title %>
+  </div>
+
+  <div class="form_group">
+    <label>本文</label>
+    <%= textarea f, :body, class: "form-control" %>
+    <%= error_tag f, :body %>
+  </div>
+
+  <%= submit "Submit", class: "btn btn-primary" %>
+<% end %>
