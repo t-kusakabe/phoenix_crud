@@ -30,5 +30,11 @@ defmodule PhoenixCrud.PostController do
         |> render("new.html", changeset: changeset)
     end
   end
+
+  def edit(conn, %{"id" => id}) do
+    post = Post |> Repo.get(id)
+    changeset = Post.changeset(post)
+    render(conn, "edit.html", post: post, changeset: changeset)
+  end
 end
 
