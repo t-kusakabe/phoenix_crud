@@ -36,5 +36,21 @@ defmodule PhoenixCrud.PostController do
     changeset = Post.changeset(post)
     render(conn, "edit.html", post: post, changeset: changeset)
   end
+
+  def update(conn, %{"id" => id, "post" => post_params}) do
+    post = Post |> Repo.get(id)
+    changeset = Post.changeset(post, post_params)
+
+    case Repo.update(changeset) do
+      {:ok, _} ->
+        conn
+        |> put_flash(:info, "投稿を更新しました")
+        |> redirect(to: post_path(conn, :index))
+      {:error, changeset} ->
+        conn
+        |> put_flash(:error, "更新に失敗しました")
+        |> render("edit.html", changeset: changeset, post: post)
+    end
+  end
 end
 
