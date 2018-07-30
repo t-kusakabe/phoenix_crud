@@ -4,5 +4,6 @@
   <div class="row">
     <h2><%= post.title %></h2>
     <%= link 'detail', to: post_path(@conn, :show, post) %>
+    <%= link 'edit', to: post_path(@conn, :edit, post) %>
   </div>
 <% end %>
