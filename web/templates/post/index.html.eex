@@ -1,0 +1,8 @@
+<h1>All Posts</h1>
+
+<%= for post <- @posts do %>
+  <div class="row">
+    <h2><%= post.title %></h2>
+    <%= link 'detail', to: post_path(@conn, :show, post) %>
+  </div>
+<% end %>
